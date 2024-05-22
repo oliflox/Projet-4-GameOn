@@ -29,6 +29,10 @@
   </div>
   </div>
   <main>
+    <div id="successMessage"> 
+      <p>Le formulaire à bien été envoyé</p>
+    </div>
+   
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-headline">
@@ -55,7 +59,7 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form id="myForm" name="reserve" action="index.html" method="get" onsubmit="return validate();">
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first"/><br>

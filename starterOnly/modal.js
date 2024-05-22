@@ -23,6 +23,8 @@ const userConditions = document.getElementById('checkbox1');
 
 const radioButtons = document.querySelectorAll('input[name="location"]');
 
+const successMessage = document.getElementById('successMessage');
+
 // Regular expression for email validation
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -62,6 +64,12 @@ function validate() {
     !isRadioChecked()) {
     return false;
   } else {
+    successMessage.style.display = "block";
+    modalbg.style.display = "none";
     return true;
   }
 }
+
+var form = document.getElementById("myForm");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);

@@ -10,6 +10,20 @@
 }
 /* Landing Page */
 
+#successMessage{
+  color: green;
+  font-size: 16px;
+  margin: 16px 0;
+  display: none;
+}
+
+#successMessage p{
+  padding: 8px 16px;
+  width: fit-content;
+  margin: 0 auto;
+  background-color: lightgreen;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -110,8 +124,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -535,3 +547,4 @@ footer {
   display: none;
 
 }
+
