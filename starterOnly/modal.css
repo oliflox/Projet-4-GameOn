@@ -17,6 +17,10 @@
   display: none;
 }
 
+.modal-open {
+  overflow: hidden;
+}
+   
 #successMessage p{
   padding: 8px 16px;
   width: fit-content;

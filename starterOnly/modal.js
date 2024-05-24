@@ -8,6 +8,7 @@ function editNav() {
 }
 
 // DOM Elements
+const form = document.getElementById("myForm");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -34,11 +35,15 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  modalbg.style.overflow = "hidden";
+  document.body.classList.add('modal-open');
 }
 
 // Close modal form
 closeModal.addEventListener('click', function () {
   modalbg.style.display = "none";
+  modalbg.style.overflow = "initial";
+  document.body.classList.remove('modal-open');
 });
 
 // radio button check
@@ -52,6 +57,15 @@ isRadioChecked = () => {
   return isChecked;
 }
 
+// Form submit event
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
+// No validate form
+document.addEventListener('DOMContentLoaded', (event) => {
+  var form = document.getElementById('myForm');
+  form.noValidate = true;
+});
 
 // Form validation
 function validate() {
@@ -68,8 +82,30 @@ function validate() {
     modalbg.style.display = "none";
     return true;
   }
+
+  // let isValid = true;
+
+  // if(){
+  //   isValid = false;
+  // }
+
+  // if(){
+  //   isValid = false;
+  // }
+
+  // if(){
+  //   isValid = false;
+  // }
+
+  // if(){
+  //   isValid = false;
+  // }
+
+  // if(){
+  //   isValid = false;
+  // }
+  // return isValid;
 }
 
-var form = document.getElementById("myForm");
-function handleForm(event) { event.preventDefault(); } 
-form.addEventListener('submit', handleForm);
+
+
