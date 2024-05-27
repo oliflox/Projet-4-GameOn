@@ -8,12 +8,14 @@ function editNav() {
 }
 
 // DOM Elements
+const content = document.querySelector('.content');
+
 const form = document.getElementById("myForm");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-const closeModal = document.querySelector('.close');
+const closeModal = document.querySelectorAll('.close-modal');
 
 const firstField = document.getElementById('first');
 const lastField = document.getElementById('last');
@@ -32,12 +34,15 @@ const quantityError = document.getElementById('quantityError');
 const locationError = document.getElementById('locationError');
 const userConditionsError = document.getElementById('userConditionsError');
 
+const FormSuccess = document.getElementById('FormSuccess');
+
 
 // Regular expression for email validation
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 
 // launch modal form
 function launchModal() {
@@ -47,10 +52,12 @@ function launchModal() {
 }
 
 // Close modal form
-closeModal.addEventListener('click', function () {
-  modalbg.style.display = "none";
-  modalbg.style.overflow = "initial";
-  document.body.classList.remove('modal-open');
+closeModal.forEach(element => {
+  element.addEventListener('click', () => {
+    modalbg.style.display = 'none';
+    modalbg.style.overflow = 'initial';
+    document.body.classList.remove('modal-open');
+  });
 });
 
 // radio button check
@@ -158,8 +165,10 @@ function validate() {
     return false;
 }
   else {
-    modalbg.style.display = "none";
-    document.body.classList.remove('modal-open');
+    form.style.display = "none";
+    FormSuccess.classList.remove ('hidden');
+    FormSuccess.classList.add ('Success');
+    content.style.height = "calc(100% - (87px*2))";
     return true;
   }
 }
