@@ -10,10 +10,11 @@
 }
 /* Landing Page */
 
-#successMessage{
-  color: green;
+.error{
+  padding: 0;
+  color: red;
   font-size: 16px;
-  margin: 16px 0;
+  margin: 5px 0;  
   display: none;
 }
 
@@ -21,12 +22,6 @@
   overflow: hidden;
 }
    
-#successMessage p{
-  padding: 8px 16px;
-  width: fit-content;
-  margin: 0 auto;
-  background-color: lightgreen;
-}
 
 body {
   margin: 0;
@@ -98,13 +93,16 @@ img {
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 20px;
   }
   .topnav.responsive a {
     float: none;
     display: block;
+
     text-align: left;
   }
+
+  
 }
 
 
@@ -116,6 +114,11 @@ img {
     display: block;
     margin-top: -15px;
   }
+  .content {
+    border-radius: 0;
+    margin: 0;
+    height: 100%;
+}
 } 
 
 main {
@@ -494,6 +497,7 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -530,6 +534,7 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+
 }
 
 @keyframes modalopen {
@@ -552,3 +557,11 @@ footer {
 
 }
 
+
+@media screen and (max-width: 540px) {
+  .content {
+    border-radius: 0;
+    margin: 0;
+    height: 100%;
+}
+} 

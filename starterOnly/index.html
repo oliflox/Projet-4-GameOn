@@ -29,10 +29,6 @@
   </div>
   </div>
   <main>
-    <div id="successMessage"> 
-      <p>Le formulaire à bien été envoyé</p>
-    </div>
-   
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-headline">
@@ -63,14 +59,17 @@
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first"/><br>
+              <p id="firstError" class="error">Veuillez saisir un prénom supérieur à 2 caractères</p>
             </div>
             <div class="formData">
               <label>Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
+              <p id="lastError" class="error">Veuillez saisir un nom supérieur à 2 caractères</p>
             </div>
             <div class="formData">
               <label>E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
+              <p id="emailError" class="error">Veuillez saisir une adresse mail valide</p>
             </div>
             <div class="formData">
               <label>Date de naissance</label><br>
@@ -79,6 +78,7 @@
             <div class="formData">
               <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity">
+              <p id="quantityError" class="error">Veuillez saisir un nombre compris entre 0 et 99</p>
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData">
@@ -107,14 +107,14 @@
                 <span class="checkbox-icon"></span>
                 Portland</label>
             </div>
-
+            <p id="locationError" class="error">Veuillez saisir un tournoi auquel vous souhaiteriez participer</p>
             <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
               <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
-              <br>
+              <p id="userConditionsError" class="error">Veuillez accepter les conditions générales d'utilisations</p>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
