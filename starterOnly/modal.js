@@ -14,26 +14,27 @@ const form = document.getElementById("myForm");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-
 const closeModal = document.querySelectorAll('.close-modal');
 
+// Form
 const firstField = document.getElementById('first');
 const lastField = document.getElementById('last');
 const emailField = document.getElementById('email');
+const BirthField = document.getElementById('birthdate');
 const quantityField = document.getElementById('quantity');
-
 const userConditions = document.getElementById('checkbox1');
-
 const radioButtons = document.querySelectorAll('input[name="location"]');
 
-
+// Gestion Erreur
 const firstError = document.getElementById('firstError');
 const lastError = document.getElementById('lastError');
 const emailError = document.getElementById('emailError');
+const BirthError = document.getElementById('birthError');
 const quantityError = document.getElementById('quantityError');
 const locationError = document.getElementById('locationError');
 const userConditionsError = document.getElementById('userConditionsError');
 
+// Success
 const FormSuccess = document.getElementById('FormSuccess');
 
 
@@ -72,7 +73,7 @@ isRadioChecked = () => {
 }
 
 // Form submit event
-function handleForm(event) { event.preventDefault(); } 
+function handleForm(event) { event.preventDefault(); }
 form.addEventListener('submit', handleForm);
 
 // No validate form
@@ -86,12 +87,12 @@ function firstFielderror() {
     firstField.value.trim() === "" || firstField.value.trim().length < 2) {
     firstField.style.border = "2px solid red";
     firstError.style.display = "block";
-    return false; 
+    return false;
   }
   else {
     firstField.style.border = "none";
     firstError.style.display = "none";
-    return true ;
+    return true;
   }
 }
 
@@ -105,7 +106,7 @@ function lastFielderror() {
   else {
     lastField.style.border = "none";
     lastError.style.display = "none";
-    return true ;
+    return true;
   }
 }
 
@@ -118,7 +119,22 @@ function emailFielderror() {
   else {
     emailField.style.border = "none";
     emailError.style.display = "none";
-    return true ;
+    return true;
+  }
+}
+
+function BirthFielderror() {
+  var dateRegex = /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
+  
+  if (!BirthField.value.match(dateRegex)) {
+    BirthField.style.border = "2px solid red";
+    BirthError.style.display = "block";
+    return false;
+  }
+  else {
+    BirthField.style.border = "none";
+    BirthError.style.display = "none";
+    return true;
   }
 }
 
@@ -131,7 +147,7 @@ function quantityFielderror() {
   else {
     quantityField.style.border = "none";
     quantityError.style.display = "none";
-    return true ;
+    return true;
   }
 }
 
@@ -142,7 +158,7 @@ function userConditionserror() {
   }
   else {
     userConditionsError.style.display = "none";
-    return true ;
+    return true;
   }
 }
 
@@ -154,20 +170,20 @@ function radioButtonserror() {
   }
   else {
     locationError.style.display = "none";
-    return true ;
+    return true;
   }
 }
 
 // Form validation
 function validate() {
 
- if (!firstFielderror() || !lastFielderror() || !emailFielderror() || !quantityFielderror() || !userConditionserror() || !radioButtonserror()) {
+  if (!firstFielderror() || !lastFielderror() || !emailFielderror() || !BirthFielderror() || !quantityFielderror() || !userConditionserror() || !radioButtonserror()) {
     return false;
-}
+  }
   else {
     form.style.display = "none";
-    FormSuccess.classList.remove ('hidden');
-    FormSuccess.classList.add ('Success');
+    FormSuccess.classList.remove('hidden');
+    FormSuccess.classList.add('Success');
     content.style.height = "calc(100% - (87px*2))";
     return true;
   }
