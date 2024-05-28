@@ -108,8 +108,9 @@ img {
     width: 100%;
     background-color: white;
     margin: 0;
-    padding: 3.5%;
+    padding: 20px;
   }
+
   .topnav a {
     display: none;
   }
@@ -140,6 +141,10 @@ img {
   }
 
   a.active{
+    margin-top: 50px;
+  }
+
+  .content{
     margin-top: 50px;
   }
 
@@ -639,13 +644,25 @@ footer {
   }
 }
 
+@media screen and (max-width: 768px) {
 
-@media screen and (max-width: 540px) {
   .content {
     border-radius: 0;
-    margin: 0;
     height: 100%;
+    margin: 98px auto;
   }
+
+  .modal-body{
+    width: 100%;
+    height: calc(100% - (100px + (15px*2)) );
+    overflow: scroll;
+  }
+
+}
+
+
+@media screen and (max-width: 540px) {
+  
 
   .hero-headline {
     font-size: 3rem;
