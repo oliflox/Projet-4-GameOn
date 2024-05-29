@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var x = document.querySelector("#myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -8,35 +8,34 @@ function editNav() {
 }
 
 // DOM Elements
-const content = document.querySelector('.content');
+const content = document.querySelector(".content");
 
-const form = document.getElementById("myForm");
+const form = document.querySelector("#myForm");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeModal = document.querySelectorAll('.close-modal');
+const closeModal = document.querySelectorAll(".close-modal");
 
 // Form
-const firstField = document.getElementById('first');
-const lastField = document.getElementById('last');
-const emailField = document.getElementById('email');
-const BirthField = document.getElementById('birthdate');
-const quantityField = document.getElementById('quantity');
-const userConditions = document.getElementById('checkbox1');
+const firstField = document.querySelector("#first");
+const lastField = document.querySelector("#last");
+const emailField = document.querySelector("#email");
+const birthField = document.querySelector("#birthdate");
+const quantityField = document.querySelector("#quantity");
+const userConditions = document.querySelector("#checkbox1");
 const radioButtons = document.querySelectorAll('input[name="location"]');
 
 // Gestion Erreur
-const firstError = document.getElementById('firstError');
-const lastError = document.getElementById('lastError');
-const emailError = document.getElementById('emailError');
-const BirthError = document.getElementById('birthError');
-const quantityError = document.getElementById('quantityError');
-const locationError = document.getElementById('locationError');
-const userConditionsError = document.getElementById('userConditionsError');
+const firstError = document.querySelector("#firstError");
+const lastError = document.querySelector("#lastError");
+const emailError = document.querySelector("#emailError");
+const BirthError = document.querySelector("#birthError");
+const quantityError = document.querySelector("#quantityError");
+const locationError = document.querySelector("#locationError");
+const userConditionsError = document.querySelector("#userConditionsError");
 
 // Success
-const FormSuccess = document.getElementById('FormSuccess');
-
+const formSuccess = document.querySelector("#FormSuccess");
 
 // Regular expression for email validation
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -44,20 +43,19 @@ const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
   modalbg.style.overflow = "hidden";
-  document.body.classList.add('modal-open');
+  document.body.classList.add("modal-open");
 }
 
 // Close modal form
-closeModal.forEach(element => {
-  element.addEventListener('click', () => {
-    modalbg.style.display = 'none';
-    modalbg.style.overflow = 'initial';
-    document.body.classList.remove('modal-open');
+closeModal.forEach((element) => {
+  element.addEventListener("click", () => {
+    modalbg.style.display = "none";
+    modalbg.style.overflow = "initial";
+    document.body.classList.remove("modal-open");
   });
 });
 
@@ -70,44 +68,40 @@ isRadioChecked = () => {
     }
   });
   return isChecked;
-}
+};
 
 // Form submit event
-function handleForm(event) { event.preventDefault(); }
-form.addEventListener('submit', handleForm);
+function handleForm(event) {
+  event.preventDefault();
+}
+form.addEventListener("submit", handleForm);
 
 // No validate form
-document.addEventListener('DOMContentLoaded', (event) => {
-  var form = document.getElementById('myForm');
+document.addEventListener("DOMContentLoaded", (event) => {
+  var form = document.querySelector("#myForm");
   form.noValidate = true;
 });
 
 function firstFielderror() {
-  if (
-    firstField.value.trim() === "" || firstField.value.trim().length < 2) {
+  if (firstField.value.trim() === "" || firstField.value.trim().length < 2) {
     firstField.style.border = "2px solid red";
     firstError.style.display = "block";
     return false;
   }
-  else {
-    firstField.style.border = "none";
-    firstError.style.display = "none";
-    return true;
-  }
+  firstField.style.border = "none";
+  firstError.style.display = "none";
+  return true;
 }
 
 function lastFielderror() {
-  if (
-    lastField.value.trim() === "" || lastField.value.trim().length < 2) {
+  if (lastField.value.trim() === "" || lastField.value.trim().length < 2) {
     lastField.style.border = "2px solid red";
     lastError.style.display = "block";
     return false;
   }
-  else {
-    lastField.style.border = "none";
-    lastError.style.display = "none";
-    return true;
-  }
+  lastField.style.border = "none";
+  lastError.style.display = "none";
+  return true;
 }
 
 function emailFielderror() {
@@ -116,39 +110,38 @@ function emailFielderror() {
     emailError.style.display = "block";
     return false;
   }
-  else {
-    emailField.style.border = "none";
-    emailError.style.display = "none";
-    return true;
-  }
+  emailField.style.border = "none";
+  emailError.style.display = "none";
+  return true;
 }
 
-function BirthFielderror() {
+function birthFielderror() {
   var dateRegex = /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
-  
+
   if (!BirthField.value.match(dateRegex)) {
     BirthField.style.border = "2px solid red";
     BirthError.style.display = "block";
     return false;
   }
-  else {
-    BirthField.style.border = "none";
-    BirthError.style.display = "none";
-    return true;
-  }
+  BirthField.style.border = "none";
+  BirthError.style.display = "none";
+  return true;
 }
 
 function quantityFielderror() {
-  if (isNaN(quantityField.value) || quantityField.value.trim() === "" || quantityField.value < 0 || quantityField.value > 99) {
+  if (
+    isNaN(quantityField.value) ||
+    quantityField.value.trim() === "" ||
+    quantityField.value < 0 ||
+    quantityField.value > 99
+  ) {
     quantityField.style.border = "2px solid red";
     quantityError.style.display = "block";
     return false;
   }
-  else {
     quantityField.style.border = "none";
     quantityError.style.display = "none";
     return true;
-  }
 }
 
 function userConditionserror() {
@@ -156,10 +149,8 @@ function userConditionserror() {
     userConditionsError.style.display = "block";
     return false;
   }
-  else {
     userConditionsError.style.display = "none";
     return true;
-  }
 }
 
 function radioButtonserror() {
@@ -168,26 +159,26 @@ function radioButtonserror() {
 
     return false;
   }
-  else {
     locationError.style.display = "none";
     return true;
-  }
 }
 
 // Form validation
 function validate() {
-
-  if (!firstFielderror() || !lastFielderror() || !emailFielderror() || !BirthFielderror() || !quantityFielderror() || !userConditionserror() || !radioButtonserror()) {
+  if (
+    !firstFielderror() ||
+    !lastFielderror() ||
+    !emailFielderror() ||
+    !BirthFielderror() ||
+    !quantityFielderror() ||
+    !userConditionserror() ||
+    !radioButtonserror()
+  ) {
     return false;
   }
-  else {
     form.style.display = "none";
-    FormSuccess.classList.remove('hidden');
-    FormSuccess.classList.add('Success');
+    formSuccess.classList.remove("hidden");
+    formSuccess.classList.add("Success");
     content.style.height = "calc(100% - (87px*2))";
     return true;
-  }
 }
-
-
-
