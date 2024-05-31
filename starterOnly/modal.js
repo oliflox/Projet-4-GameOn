@@ -2,10 +2,10 @@ function editNav() {
   var x = document.querySelector("#myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
+  } else {
+    x.className = "topnav";
   }
-  x.className = "topnav";
 }
-
 // DOM Elements
 const content = document.querySelector(".content");
 
@@ -14,6 +14,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModal = document.querySelectorAll(".close-modal");
+const modalBody = document.querySelector(".modal-body");
 
 // Form
 const firstField = document.querySelector("#first");
@@ -33,8 +34,8 @@ const quantityError = document.querySelector("#quantityError");
 const locationError = document.querySelector("#locationError");
 const userConditionsError = document.querySelector("#userConditionsError");
 
-// Success
-const formSuccess = document.querySelector("#FormSuccess");
+const successModal = document.querySelector(".successModal");
+const closeSuccess = document.querySelectorAll(".closeSuccess");
 
 // Regular expression for email validation
 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -46,7 +47,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
   modalbg.style.overflow = "hidden";
-  document.body.classList.add("modal-open");
+  document.body.classList.add("modalOpen");
+  content.style.display = "block";
 }
 
 // Close modal form
@@ -54,9 +56,18 @@ closeModal.forEach((element) => {
   element.addEventListener("click", () => {
     modalbg.style.display = "none";
     modalbg.style.overflow = "initial";
-    document.body.classList.remove("modal-open");
+    document.body.classList.remove("modalOpen");
   });
 });
+
+// Close success modal
+closeSuccess.forEach((element) => {
+  element.addEventListener('click', () => {
+    successModal.style.display = 'none';
+    modalbg.style.display = 'none';
+    document.body.classList.remove("modalOpen");
+  });
+});   
 
 // radio button check
 isRadioChecked = () => {
@@ -75,12 +86,13 @@ function handleForm(event) {
 }
 form.addEventListener("submit", handleForm);
 
-// No validate form
+// No Html validattion on form
 document.addEventListener("DOMContentLoaded", (event) => {
   var form = document.querySelector("#myForm");
   form.noValidate = true;
 });
 
+// Error messages
 function firstFielderror() {
   if (firstField.value.trim() === "" || firstField.value.trim().length < 2) {
     firstField.style.border = "2px solid red";
@@ -172,11 +184,14 @@ function validate() {
     let userConditionsCheck = userConditionserror();
     let radioButtonsCheck = radioButtonserror();
   
-    if (!firstFieldCheck || !lastFieldCheck || !emailFieldCheck || !birthFieldCheck || !quantityFieldCheck || !userConditionsCheck || !radioButtonsCheck) {
+    if (!firstFieldCheck || !lastFieldCheck || !emailFieldCheck && !birthFieldCheck || !quantityFieldCheck || !userConditionsCheck || !radioButtonsCheck) {
+      modalBody.style.overflowY = "scroll";
       return false;
     }
-      form.style.display = "none";
-      formSuccess.classList.remove("hidden");
-      formSuccess.classList.add("Success");
-      content.style.height = "calc(100% - (87px*2))";
+    content.style.display = "none";
+    content.style.overflowY = "hidden";
+    
+    successModal.style.display = "block";
+
+      form.reset();
     };

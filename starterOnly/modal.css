@@ -20,25 +20,12 @@
   display: none;
 }
 
-.modal-open {
+.modalOpen {
   overflow: hidden;
 }
 
 .hidden {
   display: none;
-}
-
-.Success {
-  height: calc(100% - (20px * 2));
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  margin: 20px 0;
-}
-
-#SuccesClose{
-  min-width: 180px;
 }
 
 body {
@@ -196,6 +183,8 @@ main {
   cursor: pointer;
 }
 
+
+
 .modal-btn:hover {
   background: #3876ac;
 }
@@ -239,6 +228,29 @@ main {
 }
 
 .content {
+  margin: 4% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  position: relative;
+  color: #fff;
+  padding: 10px 0;
+  /* Modal Height */
+  max-height: 776px;
+}
+
+.modal-body {
+  height: 100%;
+  padding: 15px 8%;
+  margin: 15px auto;
+  max-height: calc(776px - 60px);
+}
+
+.successModal{
+  display: none;
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -246,16 +258,19 @@ main {
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: hidden;
   position: relative;
-  color: #fff;
-  padding-top: 10px;
+  color: white;
+  height: calc(100% - (96px * 2) ); 
 }
 
-.modal-body {
-  height: 100%;
+.successBody{
   padding: 15px 8%;
-  margin: 15px auto;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 
@@ -647,15 +662,21 @@ footer {
 @media screen and (max-width: 768px) {
 
   .content {
+    max-width: none;
     border-radius: 0;
+    margin-top: 98px;
     height: 100%;
-    margin: 98px auto;
+    max-height: none;
   }
 
   .modal-body{
     width: 100%;
-    height: calc(100% - (100px + (15px*2)) );
     overflow: scroll;
+    margin: 0;
+  }
+
+  .header-logo img{
+    width:130px ;
   }
 
 }
