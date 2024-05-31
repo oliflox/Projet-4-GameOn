@@ -107,10 +107,6 @@ img {
     display: block;
   }
 
-  .topnav.responsive {
-    position: relative;
-  }
-
   .topnav.responsive .icon {
     position: absolute;
     right: 15px;
@@ -677,6 +673,13 @@ footer {
 
   .header-logo img{
     width:130px ;
+  }
+
+  .successModal{
+    max-width: none;
+    margin-top: 98px;
+    border-radius: 0;
+    height: calc(100% - 98px);
   }
 
 }
