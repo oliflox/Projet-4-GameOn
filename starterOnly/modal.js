@@ -2,9 +2,8 @@ function editNav() {
   var x = document.querySelector("#myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
-  } else {
-    x.className = "topnav";
   }
+  x.className = "topnav";
 }
 
 // DOM Elements
@@ -116,15 +115,15 @@ function emailFielderror() {
 }
 
 function birthFielderror() {
-  var dateRegex = /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
+  const dateRegex = /^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
-  if (!BirthField.value.match(dateRegex)) {
-    BirthField.style.border = "2px solid red";
-    BirthError.style.display = "block";
+  if (!birthField.value.match(dateRegex)) {
+    birthField.style.border = "2px solid red";
+    birthError.style.display = "block";
     return false;
   }
-  BirthField.style.border = "none";
-  BirthError.style.display = "none";
+  birthField.style.border = "none";
+  birthError.style.display = "none";
   return true;
 }
 
@@ -139,9 +138,9 @@ function quantityFielderror() {
     quantityError.style.display = "block";
     return false;
   }
-    quantityField.style.border = "none";
-    quantityError.style.display = "none";
-    return true;
+  quantityField.style.border = "none";
+  quantityError.style.display = "none";
+  return true;
 }
 
 function userConditionserror() {
@@ -149,8 +148,8 @@ function userConditionserror() {
     userConditionsError.style.display = "block";
     return false;
   }
-    userConditionsError.style.display = "none";
-    return true;
+  userConditionsError.style.display = "none";
+  return true;
 }
 
 function radioButtonserror() {
@@ -159,26 +158,25 @@ function radioButtonserror() {
 
     return false;
   }
-    locationError.style.display = "none";
-    return true;
+  locationError.style.display = "none";
+  return true;
 }
 
 // Form validation
 function validate() {
-  if (
-    !firstFielderror() ||
-    !lastFielderror() ||
-    !emailFielderror() ||
-    !BirthFielderror() ||
-    !quantityFielderror() ||
-    !userConditionserror() ||
-    !radioButtonserror()
-  ) {
-    return false;
-  }
-    form.style.display = "none";
-    formSuccess.classList.remove("hidden");
-    formSuccess.classList.add("Success");
-    content.style.height = "calc(100% - (87px*2))";
-    return true;
-}
+    let firstFieldCheck = firstFielderror();
+    let lastFieldCheck = lastFielderror();
+    let emailFieldCheck = emailFielderror();
+    let birthFieldCheck = birthFielderror();
+    let quantityFieldCheck = quantityFielderror();
+    let userConditionsCheck = userConditionserror();
+    let radioButtonsCheck = radioButtonserror();
+  
+    if (!firstFieldCheck || !lastFieldCheck || !emailFieldCheck || !birthFieldCheck || !quantityFieldCheck || !userConditionsCheck || !radioButtonsCheck) {
+      return false;
+    }
+      form.style.display = "none";
+      formSuccess.classList.remove("hidden");
+      formSuccess.classList.add("Success");
+      content.style.height = "calc(100% - (87px*2))";
+    };
